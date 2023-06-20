@@ -1,0 +1,117 @@
+let fps = ["fps"]
+let corrida = ["corrida"]
+let luta = ["luta"]
+let rpg = ["rpg"]
+let listaJogos = [fps, corrida, luta, rpg]
+let genero = "";
+let lista = "LISTA DE JOGOS:\n\n";
+
+
+//verificar se o user quer comprar
+let querComprar = prompt(`Deseja comprar algum jogo?
+Sim[1] | Não [0]`)
+
+while (Number(querComprar)) {
+
+    let nomeJogo = prompt("Qual o nome do jogo?");
+
+    let genero = prompt(`Qual o genero de ${nomeJogo}?
+    fps | corrida | luta | rpg`);
+
+    colocarJogoNaArray(genero, nomeJogo);
+
+    querComprar = prompt(`Deseja comprar algum outro jogo?
+    Sim[1] | Não [0]`);
+}
+
+gerarLista()
+
+exibirLista()
+
+
+//verificar se o user quer remover algo
+let querRemover = prompt(`Deseja remover algum jogo da sua lista?
+Sim[1] | Não [0]`)
+
+while (Number(querRemover)) {
+
+    let contador = 0
+    const titulo = prompt(`Qual jogo deseja remover?`);
+
+    for (let arrayGenero of listaJogos) {
+
+        contador += 1
+        const indexTitulo = arrayGenero.indexOf(titulo);
+        
+        if (indexTitulo != -1) {
+            arrayGenero.splice(indexTitulo, 1);
+            alert(titulo + " removido com sucesso!");
+            break;
+        }
+        
+        //se estiver passado pelas 4 arrays, significa que o item nao foi encontrado
+        if(contador == 4){
+            alert(titulo + " não foi encontrado na lista!");
+        }
+
+    }
+    
+    limparLista()
+    gerarLista()
+    exibirLista()
+
+    querRemover = prompt(`Deseja remover outro jogo da sua lista?
+Sim[1] | Não [0]`)
+
+}
+
+exibirLista()
+
+
+function colocarJogoNaArray(genero, nomeJogo) {
+
+    switch (genero) {
+        case "fps":
+            listaJogos[0].push(nomeJogo)
+            break;
+
+        case "corrida":
+            listaJogos[1].push(nomeJogo)
+            break;
+
+        case "luta":
+            listaJogos[2].push(nomeJogo)
+            break;
+
+        case "rpg":
+            listaJogos[3].push(nomeJogo)
+            break;
+    }
+
+}
+
+
+//não altera a array
+function gerarLista() {
+
+    for (let titulos of listaJogos) {
+
+        if (titulos.length == 1) {
+            lista += `${titulos}: Nenhum\n`
+
+        } else {
+            genero = titulos[0]
+            const arrayJogosSemGenero = titulos.slice(1, undefined)
+            lista += `${genero}: ${arrayJogosSemGenero.join(", ")}\n`
+        }
+
+    }
+}
+
+function exibirLista() {
+    alert(lista)
+}
+
+function limparLista(){
+    lista = "LISTA DE JOGOS:\n\n";
+}
