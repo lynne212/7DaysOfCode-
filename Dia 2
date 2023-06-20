@@ -1,0 +1,12 @@
+<script>
+  function enviar(){
+      var nome = document.getElementById('nome')
+      var idade = document.getElementById('idade')
+      var linguagem = document.getElementById('linguagem')
+      var res = document.getElementById('res')
+      var resp1 = nome.value
+      var anos = Number(idade.value)
+      var ling = linguagem.value
+res.innerHTML = `Olá ${resp1}, você tem ${anos} anos e atualmete estuda ${ling}! `
+}
+</script>
