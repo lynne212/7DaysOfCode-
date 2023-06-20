@@ -1,0 +1,38 @@
+<title>Documento</title> <script>
+let escolha = true;
+let comida;
+let lista = {
+frutas: ['FRUTAS: '],
+lactios: ['LACTIOS: '],
+congelados: ['CONGELADOS: '],
+doces: ['DOCES: ']
+};
+
+do{
+    escolha = prompt("Deseja adicionar um novo elemento a sua lista?");
+
+    if(escolha.toUpperCase()=== 'SIM'){
+        escolha = true;
+        comida = prompt("O que devo acrescentar?");
+        escolha = prompt("Qual categoria do elemento?");
+
+        if(escolha.toUpperCase() === 'FRUTAS'){
+            lista.frutas.push(comida);
+        }else if(escolha.toUpperCase() === 'LACTIOS'){
+            lista.lactios.push(comida);
+        }else if(escolha.toUpperCase() === 'CONGELADOS'){
+            lista.congelados.push(comida);
+        }else if(escolha.toUpperCase() === 'DOCES'){
+            lista.doces.push(comida);
+        }
+    }else if(escolha.toUpperCase() === 'NAO' || escolha.toUpperCase() === 'NÃO'){
+        escolha = false;
+        break;
+    }
+}while(escolha);
+
+ alert(lista.frutas.join(','));
+ alert(lista.lactios.join(','));
+ alert(lista.congelados.join(','));
+ alert(lista.doces.join(','));
+</script>
