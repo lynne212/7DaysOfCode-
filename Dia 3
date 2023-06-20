@@ -1,0 +1,37 @@
+if (opcaoTexto == "Selecione"){
+    res.innerHTML = `Opção incorreta, selecione uma opção válida.`;
+} else {
+    res.innerHTML = `A opção selecionada foi ${opcaoTexto}.`;
+    
+}
+
+if(opcaoTexto == "Front-end"){
+       
+       const respFront = prompt('Se deseja aprender React digite 1, deseja aprender Vue digite 2?');
+
+       
+       if (respFront.length == 0 || respFront.value < 1 || respFront.value > 2 ){
+            res.innerHTML = 'Você digitou uma opção inválida';
+       } else {
+            res.innerHTML += `<p>Excelente escolha! </p>.`;
+       }
+       
+} else {
+    const respBack = prompt('Se deseja aprender C# digite 1, deseja aprender Java digite 2?');
+
+    if (respBack.length == 0 || respBack.value < 1 || respBack.value > 2 ){
+        res.innerHTML = 'Você digitou uma opção inválida';
+   } else {
+        res.innerHTML += `<p>Excelente escolha! </p>.`;
+   }
+}
+const respFullStack = prompt(`Se você deseja continuar se especializando em ${opcaoTexto} digite 1, caso deseje tornar-se Full Stack digite 2`);
+
+if (respFullStack.length == 0 || respFullStack.value < 1 || respFullStack.value > 2 ){
+    alert('Você digitou uma opção inválida');
+} else if (respFullStack == 1) {
+    alert(`Parabéns pela sua escolha ao se especializar em ${opcaoTexto}!`);
+} else{
+    alert(`Parabéns pels sua escolha em se tornar Full Stack!`);
+}
+}
