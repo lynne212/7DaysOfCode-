@@ -1,20 +1,29 @@
-let numeroAleatorio = Math.floor(Math.random()*11);
-let errouNumero = 0;
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESAFIO - Dia 4</title>
+</head>
+<body>
+    <script>
+       var contador = 3    
+        var numeroaleatorio = Math.floor(Math.random() * 11)
 
-console.log(numeroAleatorio)
-for(let i = 0; i < 3; i+=1){
-    adivinharValor = prompt("Tente adivinhar o número de 0 a 10:");
-    //console.log(i);
-    if(numeroAleatorio == adivinharValor){
-        alert(`Parabéns!Você acertou.`); 
-        break;
-    }
-    if(numeroAleatorio !== adivinharValor){
-        errouNumero += 1;
-        //console.log(errouNumero)
-        alert("tente novamente")
-    }
-    if(errouNumero == 3){
-        alert(`Que pena você errou.O número era ${numeroAleatorio}`)
-    }
-}
+        for (var i = 1; i <= 3; i++) {
+            var valor = prompt ("Informe um número:")
+            if (valor == numeroaleatorio) {
+                window.alert ("PARABÉNS! \n Você acertou o número")
+                break;
+            } else {
+                contador = contador - 1
+                window.alert ("Você ERROU! \n Tem " + (contador) + " tentativas")
+            }
+        }
+
+        window.alert ("O número era: " + (numeroaleatorio))
+    </script>
+    
+</body>
+</html>
