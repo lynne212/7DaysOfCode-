@@ -1,117 +1,82 @@
-let fps = ["fps"]
-let corrida = ["corrida"]
-let luta = ["luta"]
-let rpg = ["rpg"]
-let listaJogos = [fps, corrida, luta, rpg]
-let genero = "";
-let lista = "LISTA DE JOGOS:\n\n";
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESAFIO - Dia 6</title>
+</head>
+<body>
+    <h1>LISTA</h1>
+    <button onclick="adicionarProduto()">Adicionar Produto</button>
+    <button onclick="removerProduto()">Remover Produto</button>
+    <div id="lista"></div>
 
+<script>
+var produtos = []
 
-//verificar se o user quer comprar
-let querComprar = prompt(`Deseja comprar algum jogo?
-Sim[1] | Não [0]`)
+function adicionarProduto() {
+    var nome = prompt("Digite o nome do produto:")
+    var categoria = prompt("Selecione a categoria do produto:\n 1: FRUTAS \n 2: LATICÍNIOS \n 3: CONGELADOS \n 4: DOCES")
 
-while (Number(querComprar)) {
-
-    let nomeJogo = prompt("Qual o nome do jogo?");
-
-    let genero = prompt(`Qual o genero de ${nomeJogo}?
-    fps | corrida | luta | rpg`);
-
-    colocarJogoNaArray(genero, nomeJogo);
-
-    querComprar = prompt(`Deseja comprar algum outro jogo?
-    Sim[1] | Não [0]`);
-}
-
-gerarLista()
-
-exibirLista()
-
-
-//verificar se o user quer remover algo
-let querRemover = prompt(`Deseja remover algum jogo da sua lista?
-Sim[1] | Não [0]`)
-
-while (Number(querRemover)) {
-
-    let contador = 0
-    const titulo = prompt(`Qual jogo deseja remover?`);
-
-    for (let arrayGenero of listaJogos) {
-
-        contador += 1
-        const indexTitulo = arrayGenero.indexOf(titulo);
+var categoriaNome
+    switch (categoria) {
+        case "1":
+        categoriaNome = "Frutas"
+        break
+        case "2":
+        categoriaNome = "Laticínios"
+        break
+        case "3":
+        categoriaNome = "Congelados"
+        break
+        case "4":
+        categoriaNome = "Doces"
+        break }
         
-        if (indexTitulo != -1) {
-            arrayGenero.splice(indexTitulo, 1);
-            alert(titulo + " removido com sucesso!");
-            break;
-        }
-        
-        //se estiver passado pelas 4 arrays, significa que o item nao foi encontrado
-        if(contador == 4){
-            alert(titulo + " não foi encontrado na lista!");
-        }
-
-    }
-    
-    limparLista()
-    gerarLista()
-    exibirLista()
-
-    querRemover = prompt(`Deseja remover outro jogo da sua lista?
-Sim[1] | Não [0]`)
-
-}
-
-exibirLista()
-
-
-function colocarJogoNaArray(genero, nomeJogo) {
-
-    switch (genero) {
-        case "fps":
-            listaJogos[0].push(nomeJogo)
-            break;
-
-        case "corrida":
-            listaJogos[1].push(nomeJogo)
-            break;
-
-        case "luta":
-            listaJogos[2].push(nomeJogo)
-            break;
-
-        case "rpg":
-            listaJogos[3].push(nomeJogo)
-            break;
-    }
-
-}
-
-
-//não altera a array
-function gerarLista() {
-
-    for (let titulos of listaJogos) {
-
-        if (titulos.length == 1) {
-            lista += `${titulos}: Nenhum\n`
-
+produtos.push({ nome: nome, categoria: categoriaNome })
+    var adicionarMais = confirm("Gostaria de adicionar mais produtos na lista??")
+        if (adicionarMais) {
+        adicionarProduto()
         } else {
-            genero = titulos[0]
-            const arrayJogosSemGenero = titulos.slice(1, undefined)
-            lista += `${genero}: ${arrayJogosSemGenero.join(", ")}\n`
-        }
+        mostrarLista() }}
 
-    }
-}
+function removerProduto() {
+    var nomeProduto = prompt("Informe o nome do produto que deseja remover:")
+       if (nomeProduto === null) {
+        return }
 
-function exibirLista() {
-    alert(lista)
-}
+    for (var i = 0; i < produtos.length; i++) {
+        if (produtos[i].nome === nomeProduto) {
+            produtos.splice(i, 1)
+            break  }}
 
-function limparLista(){
-    lista = "LISTA DE JOGOS:\n\n";
-}
+mostrarLista()}
+        
+function mostrarLista() {
+    var produtosPorCategoria = {
+        Frutas: [],
+        Laticínios: [],
+        Congelados: [],
+        Doces: [], }
+        
+    for (var i = 0; i < produtos.length; i++) {
+    var produto = produtos[i]
+    produtosPorCategoria[produto.categoria].push(produto.nome) }
+    
+
+var listaHTML = ""
+    for (var categoria in produtosPorCategoria) {
+    listaHTML += "<h2>" + categoria + "</h2>"
+    listaHTML += "<ul>"
+    for (var j = 0; j < produtosPorCategoria[categoria].length; j++) {
+    listaHTML += "<li>" + produtosPorCategoria[categoria][j] + "</li>" }
+    listaHTML += "</ul>"}
+        
+var listaElement = document.getElementById("lista")
+    listaElement.innerHTML = listaHTML }
+
+</script>
+</body>
+</html>
+ 
