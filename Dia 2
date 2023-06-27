@@ -1,12 +1,26 @@
-<script>
-  function enviar(){
-      var nome = document.getElementById('nome')
-      var idade = document.getElementById('idade')
-      var linguagem = document.getElementById('linguagem')
-      var res = document.getElementById('res')
-      var resp1 = nome.value
-      var anos = Number(idade.value)
-      var ling = linguagem.value
-res.innerHTML = `Olá ${resp1}, você tem ${anos} anos e atualmete estuda ${ling}! `
-}
-</script>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESAFIO - Dia 2</title>
+</head>
+<body>
+    <script>
+        var nome = prompt("Qual o seu nome?")
+        var idade = prompt("Quantos anos você tem?")
+        var linguagem_programação = prompt("Qual linguagem de programação você está estudando?")
+
+        window.alert('Olá, ' + nome + '. Você tem ' + idade + ' anos e já está aprendendo ' + linguagem_programação + '!')
+
+        var sim_nao = prompt ("Você gosta de estudar " + linguagem_programação + '?' + '(Responda com 1 para SIM ou 2 para NÃO)')
+
+        if (sim_nao == 1) {
+            window.alert ("Muito bom! Continue estudando e você terá muito sucesso.")
+        } else {
+            window.alert ("Ahh que pena... Já tentou aprender outras linguagens?")
+        }
+    </script>
+</body>
+</html>
