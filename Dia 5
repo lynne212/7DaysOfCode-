@@ -1,38 +1,68 @@
-<title>Documento</title> <script>
-let escolha = true;
-let comida;
-let lista = {
-frutas: ['FRUTAS: '],
-lactios: ['LACTIOS: '],
-congelados: ['CONGELADOS: '],
-doces: ['DOCES: ']
-};
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESAFIO - Dia 5</title>
+</head>
+<body>
+    <h1>LISTA</h1>
+    <button onclick="adicionarProduto()">Adicionar Produto</button>
+    <div id="lista"></div>
 
-do{
-    escolha = prompt("Deseja adicionar um novo elemento a sua lista?");
+<script>
+var produtos = []
 
-    if(escolha.toUpperCase()=== 'SIM'){
-        escolha = true;
-        comida = prompt("O que devo acrescentar?");
-        escolha = prompt("Qual categoria do elemento?");
+function adicionarProduto() {
+    var nome = prompt("Digite o nome do produto:")
+    var categoria = prompt("Selecione a categoria do produto:\n 1: FRUTAS \n 2: LATICÍNIOS \n 3: CONGELADOS \n 4: DOCES")
 
-        if(escolha.toUpperCase() === 'FRUTAS'){
-            lista.frutas.push(comida);
-        }else if(escolha.toUpperCase() === 'LACTIOS'){
-            lista.lactios.push(comida);
-        }else if(escolha.toUpperCase() === 'CONGELADOS'){
-            lista.congelados.push(comida);
-        }else if(escolha.toUpperCase() === 'DOCES'){
-            lista.doces.push(comida);
-        }
-    }else if(escolha.toUpperCase() === 'NAO' || escolha.toUpperCase() === 'NÃO'){
-        escolha = false;
-        break;
-    }
-}while(escolha);
+var categoriaNome
+    switch (categoria) {
+        case "1":
+        categoriaNome = "Frutas"
+        break
+        case "2":
+        categoriaNome = "Laticínios"
+        break
+        case "3":
+        categoriaNome = "Congelados"
+        break
+        case "4":
+        categoriaNome = "Doces"
+        break }
+        
+produtos.push({ nome: nome, categoria: categoriaNome })
+    var adicionarMais = confirm("Gostaria de adicionar mais produtos na lista??")
+        if (adicionarMais) {
+        adicionarProduto()
+        } else {
+        mostrarLista() }}
+        
+function mostrarLista() {
+    var produtosPorCategoria = {
+        Frutas: [],
+        Laticínios: [],
+        Congelados: [],
+        Doces: [], }
+        
+    for (var i = 0; i < produtos.length; i++) {
+    var produto = produtos[i]
+    produtosPorCategoria[produto.categoria].push(produto.nome) }
+    
 
- alert(lista.frutas.join(','));
- alert(lista.lactios.join(','));
- alert(lista.congelados.join(','));
- alert(lista.doces.join(','));
+var listaHTML = ""
+    for (var categoria in produtosPorCategoria) {
+    listaHTML += "<h2>" + categoria + "</h2>"
+    listaHTML += "<ul>"
+    for (var j = 0; j < produtosPorCategoria[categoria].length; j++) {
+    listaHTML += "<li>" + produtosPorCategoria[categoria][j] + "</li>" }
+    listaHTML += "</ul>"}
+        
+var listaElement = document.getElementById("lista")
+    listaElement.innerHTML = listaHTML }
+
 </script>
+</body>
+</html>
