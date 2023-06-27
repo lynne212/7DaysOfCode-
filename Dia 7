@@ -1,55 +1,64 @@
-let iniciarCalculadora = prompt("Digite 'ligar' para iniciar calculador");
-let opcoes = "";
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESAFIO 7 - Lógica de programação JS</title>
+</head>
+<body>
+<h1>Calculadora</h1>
 
-let operacoes = {
-    soma:"",
-    subtracao:"",
-    multiplicacao:"",
-    divisao:""
-};
+<label for="primeiroNum">Primeiro Número</label>
+<input type="text" id="primeiroNum" placeholder="Digite um número..."> <br> <br>
+                   
+<label for="segundoNum">Segundo Número</label>
+<input type="text" id="segundoNum" placeholder="Digite um número...">
+                    
 
-while (iniciarCalculadora == "ligar"){
+<h2>Operação</h2>
 
-    opcoes = prompt("Digite: soma, subtracao, multiplicacao ,divisao ou desligar ");
-    
-    if(opcoes == "desligar"){
-        break;
-    };
+<input type="radio" id="id_soma" name="operacao" value="soma">
+<label for="id_soma">Soma</label>
 
-    switch(opcoes) {
-        case "soma":
-            operacoes.soma = somar(parseFloat(prompt("Digite o primeiro valor")),parseFloat(prompt("Digite o segundo valor")));
+<input type="radio" id="id_sub" name="operacao" value="subtracao">
+<label for="id_sub">Subtração</label>
 
-            function somar(primeiroValor = required(),segundoValor = required()){
-            alert(primeiroValor + segundoValor);
-            };
-            break;
+<input type="radio" id="id_mult" name="operacao" value="multiplicacao">
+<label for="id_mult">Multiplicação</label>
 
-        case "subtracao":
-            operacoes.subtracao = subtrair(parseFloat(prompt("Digite o primeiro valor")),parseFloat(prompt("Digite o segundo valor")));
+<input type="radio" id="id_div" name="operacao" value="divisao">
+<label for="id_div">Divisão</label> <br> <br>
 
-            function subtrair(primeiroValor = required(),segundoValor = required()){
-            alert(primeiroValor - segundoValor);
-            };
-            break;
+<button onclick="calcula()">Calcular</button>
 
-        case "multiplicacao":
-            operacoes.multiplicacao = multiplicar(parseFloat(prompt("Digite o primeiro valor")),parseFloat(prompt("Digite o segundo valor")));
+<h2>Resultado:<span id="result"></span></h2>
 
-            function multiplicar(primeiroValor = required(),segundoValor = required()){
-            alert(primeiroValor * segundoValor);
-            };
-            break;
+<script>
+    function calcula() {
+        let num1 = parseFloat(document.getElementById("primeiroNum").value);
+        let num2 = parseFloat(document.getElementById("segundoNum").value);
 
-        case "divisao":
-            operacoes.divisao = divisao(parseFloat(prompt("Digite o primeiro valor")),parseFloat(prompt("Digite o segundo valor")));
+        let operacao = document.querySelector('input[name="operacao"]:checked').value;
 
-            function divisao(primeiroValor = required(),segundoValor = required()){
-            alert(primeiroValor / segundoValor);
-            };
-            break;
+        let resultado = 0;
+                if (operacao == "soma") {
+                resultado = num1 + num2;
 
-        default:
-            alert("opcão invalida! Tente novamente.")
-    };
-}; 
+                } else if (operacao == "subtracao") {
+                resultado = num1 - num2;
+
+                } else if (operacao == "multiplicacao") {
+                resultado = num1 * num2; 
+
+                } else if (operacao == "divisao") {
+                if (num2 != 0) {
+                resultado = num1 / num2;}
+                }
+
+                document.getElementById("result").innerHTML = resultado;
+                 }
+</script>
+</body>
+</html>
+       
