@@ -1,24 +1,25 @@
-ia 1deixe numeroUm = 1
-deixe stringUm = '1'
-deixe numeroTrinta = 30
+let numeroUm = 1
+let stringUm = '1'
+let numeroTrinta = 30
 let stringTrinta = '30'
-deixe numeroDez = 10
-deixe stringDez = '10'
+let numeroDez = 10
+let stringDez = '10'
 
 if (numeroUm == stringUm) {
-  console.log('As variáveis ​​numeroUm e stringUm tem o mesmo valor, mas tipos diferentes')
-} outro {
-  console.log('As variáveis ​​numeroUm e stringUm não tem o mesmo valor')
+    console.log ('1: As variáveis numeroUm e stringUm tem o mesmo valor, mas tipos diferentes')
+} else {
+    console.log ('1: As váriaveis numeroUm e stringUm não tem o mesmo valor')
 }
 
-if (númeroTrinta === stringTrinta) {
-  console.log('As variáveis ​​numeroTrinta e stringTrinta tem o mesmo valor e mesmo tipo')
-} outro {
-  console.log('As variáveis ​​numeroTrinta e stringTrinta não tem o mesmo tipo')
+if (numeroTrinta == stringTrinta) {
+    console.log ('30: As várias numeroTrinta e stringTrinta tem o mesmo valor, mas tipos diferentes')
+} else {
+    console.log ('30: As várias numeroTrinta e stringTrinta não tem o mesmo valor')
 }
 
-if (númeroDez == stringDez) {
-  console.log('As variáveis ​​numeroDez e stringDez tem o mesmo valor, mas tipos diferentes')
-} outro {
-  console.log('As variáveis ​​numeroDez e stringDez não tem o mesmo valor')
+if (numeroDez == stringDez) {
+    console.log('10: As váriaveis numeroDez e stringDez tem o mesmo valor, mas tipos diferentes')
+} else {
+    console.log('10: As váriaveis numeroDez e stringDez não tem o mesmo valor')
 }
+
